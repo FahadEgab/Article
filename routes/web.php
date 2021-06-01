@@ -13,6 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/Index', function () {
+    return view('Index');
+});
+
+
+
+Route::get('/create', function () {
+    return view('create');
+});
+Route::post('store','ArticleController@createArticale')->name('store');
+
+
+Route::get('/edit', function () {
+    return view('edit');
+});
+Route::get('/delete', function () {
+    return view('delete');
 });
