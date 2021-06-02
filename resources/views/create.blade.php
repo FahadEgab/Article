@@ -19,7 +19,7 @@
         <div class="col-md-3">
 
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6" style="box-shadow: 0 .15rem 1.75rem 0 rgba(58,59,69,.15) !important;padding: 2rem">
         <form method="post" action="{{route('store')}}">
             @csrf
             <div class="mb-3">

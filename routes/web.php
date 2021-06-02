@@ -13,21 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/Index', function () {
-    return view('Index');
-});
-
+Route::get('/Index','ArticleController@Index');
 
 
 Route::get('/create', function () {
     return view('create');
 });
+
 Route::post('store','ArticleController@createArticale')->name('store');
 
 
-Route::get('/edit', function () {
-    return view('edit');
-});
+Route::get('/edit','ArticleController@edit');
+Route::get('/editId/{id}','ArticleController@editId') ->name('editId');
+Route::post('/update/{id}','ArticleController@update') -> name('update');
+
 Route::get('/delete', function () {
     return view('delete');
 });

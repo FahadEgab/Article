@@ -22,39 +22,36 @@
         <div class="col-md-6" style="box-shadow: 0 .15rem 1.75rem 0 rgba(58,59,69,.15) !important;padding: 2rem">
 
 
-            <table class="table table-hover">
-                <thead>
-                <tr>
-                    <th scope="col">رقم المقالة</th>
-                    <th scope="col">عنوان المقالة</th>
-                    <th scope="col">العرض</th>
-
-                </tr>
-                </thead>
-                <tbody>
 
 
-                @foreach($Articles as $article)   <tr>
+            <form method="post" action="{{route('update',$fond->id)}}">
+                @csrf
+                <div class="mb-3">
+                    <label for="title" class="form-label">عنوان المقالة:</label>
+                    <input type="text" class="form-control" value='{{$fond -> title}}' name="title" id="formGroupExampleInput" >
+                    @error('title')
+                    <small class="form-text text-danger">
+                        {{$message}}
+                    </small>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    <label for="content" class="form-label">نص المقالة:</label>
+                    <textarea class="form-control" style="height: 40vh" name ="content">{{$fond -> content}}</textarea>
+                    @error('content')
+                    <small class="form-text text-danger">
+                        {{$message}}
+                    </small>
+                    @enderror
+                </div>
+                @if(Session::has('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{Session::get('success')}}
+                    </div>
+                @endif
 
-                    <th scope="row">
-                        {{$article ->Id}}
-                    </th>
-
-                    <td>
-                        {{$article ->title}}
-                    </td>
-                    <td>
-                        <a href="{{url('editId/'. $article ->Id)}}" class="btn btn-info" style="float: left">عرض</a>
-                    </td>
-
-
-                </tr>  @endforeach
-
-
-
-                </tbody>
-            </table>
-
+                <button type="submit" class="btn btn-success" style="float: left">تعديل</button>
+            </form>
 
 
         </div>

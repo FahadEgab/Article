@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="box-shadow: 0 .15rem 1.75rem 0 rgba(58,59,69,.15) !important;">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{url('Index')}}">مقالات</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
