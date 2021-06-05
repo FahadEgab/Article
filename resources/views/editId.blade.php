@@ -24,7 +24,7 @@
 
 
 
-            <form method="post" action="{{route('update',$fond->id)}}">
+            <form method="post" action="{{route('update', $fond -> Id)}}">
                 @csrf
                 <div class="mb-3">
                     <label for="title" class="form-label">عنوان المقالة:</label>
