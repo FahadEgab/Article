@@ -12,21 +12,32 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//Index to showing all articles
 Route::get('Index','ArticleController@Index');
+//show  to display specific article
 Route::get('show/{Id}','ArticleController@show');
 
+//Create to display the form of create
 Route::get('create', function () {
     return view('create');
 });
-
+//Store the values of form creation
 Route::post('store','ArticleController@createArticale')-> name('store');
 
-
+//Display all articles belong the user
 Route::get('edit','ArticleController@edit');
+//Edit to display the form of Edit
 Route::get('editId/{Id}','ArticleController@editId') -> name('editId');
+//Update the values of form
 Route::post('update/{Id}','ArticleController@update') -> name('update');
-
-Route::get('delete','ArticleController@delete');
+//Delete Article
 Route::get('deleteArticle/{Id}','ArticleController@deleteArticle');
 
+//Display form of sign in
+Route::get('signIn','UserContrller@signIn');
+//Signing in method
+Route::post('signInGo','UserContrller@signInGo');
+//Display form of sign up
+Route::get('signUp','UserContrller@signUp');
+//Registration method
+Route::post('signUpGo','UserContrller@signUpGo');

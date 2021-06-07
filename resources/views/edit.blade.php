@@ -1,19 +1,10 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>تعديل مقالة</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
-</head>
-<body dir="rtl">
-@include("structure.nav")
-<div class="container" style="margin-top:15px;">
+@extends("structure.nav")
+@section("titleOfPage")
+    <title>مقالاتي</title>
+@endsection
+@section("contentOfView")
+
+    <div class="container" style="margin-top:15px;">
     <div class="row">
 
         <div class="col-md-3">
@@ -27,8 +18,8 @@
                 <tr>
                     <th scope="col">رقم المقالة</th>
                     <th scope="col">عنوان المقالة</th>
-                    <th scope="col">العرض</th>
-
+                    <th scope="col">التعديل</th>
+                    <th scope="col">الحذف</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -44,9 +35,11 @@
                         {{$article ->title}}
                     </td>
                     <td>
-                        <a href="{{url('editId/'. $article ->Id)}}" class="btn btn-info" style="float: left">عرض</a>
+                        <a href="{{url('editId/'. $article ->Id)}}" class="btn btn-info" >عرض</a>
                     </td>
-
+                    <td>
+                        <a href="{{url('deleteArticle/'. $article ->Id)}}" class="btn btn-danger" >حذف</a>
+                    </td>
 
                 </tr>  @endforeach
 
@@ -62,5 +55,5 @@
 
     </div>
 </div>
-</body>
-</html>
+
+@endsection
