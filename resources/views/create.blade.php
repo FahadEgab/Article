@@ -15,7 +15,7 @@
             @csrf
             <div class="mb-3">
                 <label for="title" class="form-label">عنوان المقالة:</label>
-                <input type="text" class="form-control" name="title" id="formGroupExampleInput" >
+                <input type="text" value="{{old('title')}}" class="form-control" name="title" id="formGroupExampleInput" >
                 @error('title')
                 <small class="form-text text-danger">
                     {{$message}}
@@ -24,7 +24,9 @@
             </div>
             <div class="mb-3">
                 <label for="content" class="form-label">نص المقالة:</label>
-                <textarea class="form-control" style="height: 40vh" name ="content"></textarea>
+                <textarea class="form-control" dir="rtl" id="editor" style="height: 40vh" name="content">
+                    {{old('content')}}
+                </textarea>
                 @error('content')
                 <small class="form-text text-danger">
                     {{$message}}
@@ -44,5 +46,11 @@
 
     </div>
 </div>
-
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
 @endsection

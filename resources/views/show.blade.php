@@ -1,6 +1,6 @@
 @extends("structure.nav")
 @section("titleOfPage")
-    <title>عرض المقالة للتعديل</title>
+    <title>عرض المقالة</title>
 @endsection
 @section("contentOfView")
 
@@ -15,7 +15,13 @@
                {{$fond -> title}}
            </h1>
             <p>
-                {{$fond -> content}}
+                {{$fond->content}}
+
+            </p>
+
+            <br>
+            <p>
+                الكاتب: {{$fond -> user -> name}}
             </p>
         </div>
 

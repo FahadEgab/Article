@@ -4,35 +4,41 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\createRequest;
 use App\Models\Article;
+use App\Models\User;
 use Illuminate\Http\Request;
+use MongoDB\Driver\Session;
 
 class ArticleController extends Controller
 {
     public function __construct()
     {
+       $this->middleware(['myAuth'],['except'=>['Index','show']]);
     }
 
     public function createArticale(createRequest $request)
     {
 
-
         Article::create([
             'title' => $request->title,
             'content' => $request->content,
+            'user_Id' => session()->get('Id'),
         ]);
         return redirect()->back()->with(['success' => 'تم إضافة المقالة بنجاح']);
 
     }
 
-    public function Index()
+    public static function Index()
     {
-        $Articles = Article::select('Id', 'title', 'content')->get();
+        $Articles = Article::with('user')->get();
+
         return view('Index', compact('Articles'));
     }
 
     public function edit()
     {
-        $Articles = Article::select('Id', 'title', 'content')->get();
+        //$Articles = Article::where('user_Id',session()->get('Id'))->select('Id', 'title', 'content')->get();
+        $user =User::with('articles') -> find(session()->get('Id'));
+        $Articles =$user -> articles;
         return view('edit', compact('Articles'));
     }
 
@@ -81,12 +87,12 @@ class ArticleController extends Controller
 
     public function show($articleId)
     {
-        $article = Article::find($articleId);
+        $article = Article::with('user')->find($articleId);
         if (!$article) {
             return redirect()->back();
         } else {
 
-            $fond = Article::select('Id', 'title', 'content')->find($articleId);
+            $fond = $article;
             return view('show', compact('fond'));
         }
 

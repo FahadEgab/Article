@@ -13,14 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 //Index to showing all articles
-Route::get('Index','ArticleController@Index');
+Route::get('Index','ArticleController@Index') -> name('Index');
 //show  to display specific article
 Route::get('show/{Id}','ArticleController@show');
 
 //Create to display the form of create
 Route::get('create', function () {
     return view('create');
-});
+}) ->middleware('myAuth');
 //Store the values of form creation
 Route::post('store','ArticleController@createArticale')-> name('store');
 
@@ -34,10 +34,12 @@ Route::post('update/{Id}','ArticleController@update') -> name('update');
 Route::get('deleteArticle/{Id}','ArticleController@deleteArticle');
 
 //Display form of sign in
-Route::get('signIn','UserContrller@signIn');
+Route::get('signIn','UserContrller@signIn') -> name('signIn');
 //Signing in method
-Route::post('signInGo','UserContrller@signInGo');
+Route::post('signInGo','UserContrller@signInGo') -> name('signInGo');
 //Display form of sign up
-Route::get('signUp','UserContrller@signUp');
+Route::get('signUp','UserContrller@signUp')-> name('signUp');
 //Registration method
-Route::post('signUpGo','UserContrller@signUpGo');
+Route::post('signUpGo','UserContrller@signUpGo')-> name('signUpGo');
+//Sign Out
+Route::get('signOut','UserContrller@signOut') -> name('signOut');

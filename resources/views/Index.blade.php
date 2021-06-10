@@ -18,6 +18,7 @@
                           <p class="card-text" style="text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">
                               {{$article -> content}}
                           </p>
+                          الكاتب: {{$article -> user -> name}}
                           <a href="{{url('show/'.$article -> Id)}}" style="float: left;" class="btn btn-info">عرض</a>
 
                       </div>
